@@ -1,7 +1,8 @@
-IMAGE_NAME ?= splatform/concourse-git-queue
+IMAGE_NAME ?= hclcnlabs/concourse-git-queue
 
 .PHONY: test
 test: image
+	IMAGE_NAME=$(IMAGE_NAME) test/out_test.sh
 	IMAGE_NAME=$(IMAGE_NAME) test/check_test.sh
 	IMAGE_NAME=$(IMAGE_NAME) test/in_test.sh
 

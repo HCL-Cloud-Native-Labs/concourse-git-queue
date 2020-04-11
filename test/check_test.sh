@@ -2,7 +2,7 @@
 LATEST_VERSION=$(docker run --rm -i $IMAGE_NAME sh /opt/resource/check <<EOF
 {
   "source": {
-    "bucket": "kubecf-ci",
+    "bucket": "ibm-kubecf-ci",
     "bucket_subfolder": "build-queue",
     "filter": "json",
     "aws_access_key_id": "$AWS_KEY_ID",
@@ -22,13 +22,13 @@ fi
 LATEST_VERSION=$(docker run --rm -i $IMAGE_NAME sh /opt/resource/check <<EOF
 {
   "source": {
-    "bucket": "kubecf-ci",
+    "bucket": "ibm-kubecf-ci",
     "bucket_subfolder": "build-queue",
     "filter": "json",
     "aws_access_key_id": "$AWS_KEY_ID",
     "aws_secret_access_key": "$AWS_SECRET_ACCESS_KEY"
   },
-  "version": {"ref": "1f76ad043df336c9379a38fd8152d96d6ec0"}
+  "version": {"ref": "82f80927fd237053d2653fe6add94c1e40b2d551"}
 }
 EOF
 )

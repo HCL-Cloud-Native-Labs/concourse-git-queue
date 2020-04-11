@@ -41,10 +41,10 @@ TRIGGER=$(cat ${FILE} | jq -r .trigger)
 METADATA=$(cat ${FILE} | jq -r .metadata)
 # Checkout the commit
 # TODO: Implement private repos and all (like this one: https://github.com/concourse/git-resource/blob/master/assets/in)
-git clone --bare "https://github.com/${REMOTE}" .git
+git clone --bare "https://${GITHUB_ACCESS_TOKEN}@github.com/${REMOTE}" .git
 git config --unset core.bare
 git remote rm origin
-git remote add origin "https://github.com/${REMOTE}"
+git remote add origin "https://${GITHUB_ACCESS_TOKEN}github.com/${REMOTE}"
 git reset --hard ${COMMIT}
 mkdir .git/resource
 echo "${COMMIT}" > .git/resource/ref

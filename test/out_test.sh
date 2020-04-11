@@ -2,7 +2,7 @@
 set -xe
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-WORK_DIR=`mktemp -d -p "$DIR"`
+WORK_DIR=`mktemp -d  "/tmp/tmp.XXXXXXXXXX"`
 if [[ ! "$WORK_DIR" || ! -d "$WORK_DIR" ]]; then
   echo "Could not create temp dir"
   exit 1
@@ -18,15 +18,15 @@ trap cleanup EXIT
 docker run --rm -i -v $WORK_DIR:/output $IMAGE_NAME sh /opt/resource/out /output <<EOF
 {
   "source": {
-    "bucket": "kubecf-ci",
+    "bucket": "ibm-kubecf-ci",
     "bucket_subfolder": "build-queue",
     "aws_access_key_id": "$AWS_KEY_ID",
     "aws_secret_access_key": "$AWS_SECRET_ACCESS_KEY",
-    "remote": "SUSE/kubecf"
+    "remote": "HCL-Cloud-Native-Labs/kubecf"
   },
   "params": {
     "commit_path": "/commit_sha",
-    "remote": "SUSE/kubecf",
+    "remote": "HCL-Cloud-Native-Labs/kubecf",
     "state": "passed",
     "trigger": "PR"
   }
